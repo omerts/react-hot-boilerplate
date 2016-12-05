@@ -4,12 +4,18 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 const rootEl = document.getElementById('root');
-ReactDOM.render(
-  <AppContainer>
-    <App />
-  </AppContainer>,
-  rootEl
-);
+
+let counter = 0
+
+setInterval(() => {
+  ReactDOM.render(
+    <AppContainer>
+      <App counter={++counter} />
+    </AppContainer>,
+    rootEl
+  );
+}, 1000);
+
 
 if (module.hot) {
   module.hot.accept('./App', () => {

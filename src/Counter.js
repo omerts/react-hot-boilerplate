@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 
+class Test extends Component {
+  render() {
+    return <div>Hello</div>
+  }
+}
+
 export default class Counter extends Component {
   constructor(props) {
     super(props);
-    this.state = { counter: 0 };
   }
 
-  componentDidMount() {
-    this.interval = setInterval(this.tick.bind(this), 1000);
-  }
+  shouldComponentUpdate() {
+    console.log('pure (or not)')
 
-  tick() {
-    this.setState({
-      counter: this.state.counter + 1
-    });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
+    return true
   }
 
   render() {
     return (
-      <h2>Counter: {this.state.counter}</h2>
+      <div>
+        <h2>Counter: {this.props.counter}</h2>
+        <Test />
+      </div>
    );
   }
 }
